@@ -1,5 +1,12 @@
+
 hello this is test to perform pull, fetch and merge request.
 test branch has test file
 created by dewashish0
 changes only in remote
 changes made in local
+
+Save the file and commit the changes using the git add and git commit commands.
+
+Finally, push the changes to the remote repository using the git push command.
+
+By following these steps, you should be able to resolve the conflicts and successfully pull changes from the remote repository to your local repository.
