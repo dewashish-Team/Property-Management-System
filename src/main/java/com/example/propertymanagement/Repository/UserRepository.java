@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface UserRepository extends CrudRepository<UserEntity,Long> {
 
-    Optional<UserEntity> findByOwnerEmailAndPassword(String email,String password);  // find by query 
+    Optional<UserEntity> findByOwnerEmail(String email);  // find by query
 }
