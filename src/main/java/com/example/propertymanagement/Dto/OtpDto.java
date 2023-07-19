@@ -1,4 +1,4 @@
-package com.example.propertymanagement.Exception;
+package com.example.propertymanagement.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorModel {
-    private String errorCode;
-    private String errorMessage;
+public class OtpDto {
+    private Long id;
+    private String email;
+    private String otp;
+
 }

@@ -1,5 +1,6 @@
 package com.example.propertymanagement.Controller;
 
+import com.example.propertymanagement.Dto.OtpDto;
 import com.example.propertymanagement.Dto.UserDto;
 import com.example.propertymanagement.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,18 @@ public class UserController {
         userDto=userService.logIn(userDto.getOwnerEmail(),userDto.getPassword());
         ResponseEntity<UserDto> response=new ResponseEntity<>(userDto,HttpStatus.OK);
         return response;
+    }
+    @PostMapping("/otp")
+    public ResponseEntity<UserDto> passwordResetOtpGeneration(@RequestBody UserDto userDto)
+    {
+        userDto=userService.passwordResetOtpGeneration(userDto.getOwnerEmail());
+        return new ResponseEntity<>(userDto,HttpStatus.CREATED);
+    }
+    @PostMapping("/verify")
+    public ResponseEntity<String> passwordResetOtpVerification(@RequestBody OtpDto otpDto)
+    {
+        String message=userService.passwordResetOtpVerification(otpDto);
+        return new ResponseEntity<>(message,HttpStatus.ACCEPTED);
     }
 
 }

@@ -19,6 +19,7 @@ public class UserConverter {
         userEntity.setMobileNo(userDto.getMobileNo());
 //        userEntity.setPassword(userDto.getPassword());
         userEntity.setPassword(password.passwordEncrypt(userDto.getPassword()));
+
         return userEntity;
     }
     public UserDto convertEntityToDto(UserEntity userEntity)
