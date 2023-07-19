@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Form</title>
+</head>
+
+<body>
+    <h1>Login Form</h1>
+    <form id="loginForm">
+        <label for="ownerEmail">Email:</label>
+        <input type="email" id="ownerEmail" name="ownerEmail" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            var formData = new FormData(this); // Create a FormData object from the form
+
+            fetch("http://localhost:8080/api/v1/user/login", {
+                method: "POST",
+                body: formData
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json(); // Parse response as JSON if successful
+                    } else {
+                        throw new Error("Error: " + response.status);
+                    }
+                })
+                .then(function (data) {
+                    // Display the response data
+                    var result = "ID: " + data.id + "<br>";
+                    result += "Owner Name: " + data.ownerName + "<br>";
+                    result += "Email: " + data.ownerEmail + "<br>";
+                    result += "Mobile No: " + data.mobileNo + "<br>";
+                    document.body.innerHTML = result;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        });
+    </script>
+</body>
+
+</html>
